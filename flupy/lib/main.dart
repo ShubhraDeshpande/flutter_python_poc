@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert'; // convert json into data
 import 'package:http/http.dart' as http;
+import 'package:flupy/hex_grid.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: ApiDemo(),
+      home: HexGridWidgetExample()
+//      ApiDemo(),
     );
   }
 }
@@ -62,19 +64,21 @@ class ApiDemoState extends State<ApiDemo>{
       body: ListView.builder(itemBuilder: (BuildContext context, int index){
         return Container(
           child: Center(
-            child: Column(
+            child: Row(
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Container(child: Text(data[index]["name"], style: TextStyle(fontSize: 18),)),
+                  child: Card( color: Colors.amberAccent,
+                    child: Container(
+                        height: 30,child: Text(data[index]["name"], style: TextStyle(fontSize: 18),)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
                     child: Container(
-                      color: Colors.amberAccent,
+                      height: 30,
+
                       child: Text(data[index]["model"]),
                     ),
                   ),
